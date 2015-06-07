@@ -11,12 +11,17 @@ namespace CS_ASP_017
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            myTextBox.Text = "Some value";
-            myCalendar.SelectedDate = DateTime.Now.Date.AddDays(2);
+            if (!Page.IsPostBack)
+            {
+                myTextBox.Text = "Some value";
+                myCalendar.SelectedDate = DateTime.Now.Date.AddDays(2);
+            }
         }
 
         protected void okButton_Click(object sender, EventArgs e)
         {
+            // http://is.gd/pagelifecycle
+
             resultLabel.Text = myTextBox.Text + " - " 
                 + myCalendar.SelectedDate.ToShortDateString();
         }
